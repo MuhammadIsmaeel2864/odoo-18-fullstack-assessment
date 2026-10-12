@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_visitor_log_front_desk,visitor.log.front.desk,visitor_management.model_visitor_log,contact_access_control.group_front_desk,1,1,1,1
+access_visitor_log_contact_manager,visitor.log.contact.manager,visitor_management.model_visitor_log,contact_access_control.group_contact_manager,1,1,1,1

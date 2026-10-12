@@ -1,0 +1,89 @@
+
+<odoo>
+
+    <!-- Visitor Badge QWeb Template -->
+    <template id="report_visitor_badge">
+
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+
+                    <div class="page">
+
+                        <div style="border: 2px solid #333;
+                                    padding: 20px;">
+
+                            <h2 style="text-align: center;">
+                                VISITOR BADGE
+                            </h2>
+
+                            <hr/>
+
+                            <h3 style="text-align: center;">
+                                <span t-field="o.visitor_id.name"/>
+                            </h3>
+
+                            <p>
+                                <strong>Reference:</strong>
+                                <span t-field="o.name"/>
+                            </p>
+
+                            <p>
+                                <strong>Visitor:</strong>
+                                <span t-field="o.visitor_id.name"/>
+                            </p>
+
+                            <p>
+                                <strong>Host Employee:</strong>
+                                <span t-field="o.host_id.name"/>
+                            </p>
+
+                            <p>
+                                <strong>Purpose:</strong>
+                                <span t-field="o.purpose"/>
+                            </p>
+
+                            <p>
+                                <strong>Check-in Time:</strong>
+                                <span t-field="o.check_in"/>
+                            </p>
+
+                            <hr/>
+
+                            <p style="text-align: center;">
+                                Please display this badge
+                                during your visit.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </t>
+            </t>
+        </t>
+
+    </template>
+
+    <!-- PDF Report Action -->
+    <record id="action_report_visitor_badge"
+            model="ir.actions.report">
+
+        <field name="name">Visitor Badge</field>
+        <field name="model">visitor.log</field>
+        <field name="report_type">qweb-pdf</field>
+
+        <field name="report_name">visitor_management.report_visitor_badge</field>
+        <field name="report_file">visitor_management.report_visitor_badge</field>
+
+        <field name="binding_model_id"
+               ref="model_visitor_log"/>
+
+        <field name="binding_type">report</field>
+
+        <field name="groups_id"
+               eval="[(4, ref('contact_access_control.group_front_desk')), (4, ref('contact_access_control.group_contact_manager'))]"/>
+
+    </record>
+
+</odoo>

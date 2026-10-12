@@ -1,0 +1,83 @@
+
+<odoo>
+    <record id="view_partner_form_contact_category"
+            model="ir.ui.view">
+
+        <field name="name">res.partner.form.contact.category</field>
+
+        <field name="model">res.partner</field>
+
+        <field name="inherit_id"
+               ref="base.view_partner_form"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='category_id']"
+                   position="after">
+
+                <field name="contact_category"/>
+
+            </xpath>
+
+        </field>
+    </record>
+
+    
+    <record id="view_partner_search_category"
+            model="ir.ui.view">
+
+        <field name="name">
+            res.partner.search.contact.category
+        </field>
+
+        <field name="model">res.partner</field>
+
+        <field name="inherit_id"
+               ref="base.view_res_partner_filter"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//group[@name='group_by']"
+                   position="before">
+
+                <field name="contact_category"
+                       string="Contact Category"/>
+
+                <separator/>
+
+                <filter name="category_customer"
+                        string="Sales Lead / Customer"
+                        domain="[('contact_category', '=', 'customer')]"/>
+
+                <filter name="category_vendor"
+                        string="Vendor / Supplier"
+                        domain="[('contact_category', '=', 'vendor')]"/>
+
+                <filter name="category_employee"
+                        string="Employee"
+                        domain="[('contact_category', '=', 'employee')]"/>
+
+                <filter name="category_visitor"
+                        string="Front Desk / Visitor"
+                        domain="[('contact_category', '=', 'visitor')]"/>
+
+                <filter name="category_general"
+                        string="General / Internal"
+                        domain="[('contact_category', '=', 'general')]"/>
+
+            </xpath>
+
+            <xpath expr="//group[@name='group_by']"
+                   position="inside">
+
+                <filter name="group_contact_category"
+                        string="Contact Category"
+                        context="{'group_by': 'contact_category'}"/>
+
+            </xpath>
+
+        </field>
+    </record>
+
+
+</odoo>

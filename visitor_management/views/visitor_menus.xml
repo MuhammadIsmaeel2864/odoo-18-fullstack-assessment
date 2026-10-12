@@ -1,0 +1,45 @@
+
+<odoo>
+
+    <!-- Visitor Management Window Action -->
+
+    <record id="action_visitor_log"
+            model="ir.actions.act_window">
+
+        <field name="name">Visitor Logs</field>
+        <field name="res_model">visitor.log</field>
+
+        <field name="view_mode">list,form,kanban,calendar</field>
+
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Register your first visitor
+            </p>
+            <p>
+                Manage visitor check-ins and check-outs.
+            </p>
+        </field>
+
+    </record>
+
+    <!-- Main Application Menu -->
+
+    <menuitem
+        id="menu_visitor_management_root"
+        name="Visitor Management"
+        sequence="30"
+        groups="contact_access_control.group_front_desk,contact_access_control.group_contact_manager"
+    />
+
+    <!-- Visitor Logs Submenu -->
+
+    <menuitem
+        id="menu_visitor_logs"
+        name="Visitor Logs"
+        parent="menu_visitor_management_root"
+        action="action_visitor_log"
+        sequence="10"
+        groups="contact_access_control.group_front_desk,contact_access_control.group_contact_manager"
+    />
+
+</odoo>
